@@ -9,13 +9,13 @@ import com.rinfinity.basicandroidsamples.adapter.viewholders.BasicSampleItemView
 import com.rinfinity.basicandroidsamples.adapter.viewholders.NotesItemViewHolder
 
 class NotesAdapter(mContext: Context, list: ArrayList<Any>) :
-    BaseAdapter(list, mContext),
-    ItemTouchHelperListener {
+    BaseAdapter(list, mContext) {
 
     companion object {
         @JvmStatic
         val TYPE_NOTE = 1
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasicSampleItemViewHolder {
         return when (viewType) {
             TYPE_NOTE -> NotesItemViewHolder(
@@ -38,22 +38,5 @@ class NotesAdapter(mContext: Context, list: ArrayList<Any>) :
             else -> super.getItemViewType(position)
         }
     }
-
-    override fun onItemMoved(from: Int, to: Int) {
-        val data = list.removeAt(from)
-        list.add(to, data)
-        notifyItemMoved(from, to)
-
-    }
-
-    override fun onItemSwiped(swipePosition: Int) {
-        list.removeAt(swipePosition)
-        notifyItemRemoved(swipePosition)
-    }
-
-    override fun onLongPress(e: MotionEvent?, viewHolder: BasicSampleItemViewHolder) {
-        mItemTouchHelper?.startDrag(viewHolder)
-    }
-
 
 }
