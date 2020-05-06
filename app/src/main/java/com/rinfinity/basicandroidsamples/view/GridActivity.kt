@@ -33,7 +33,7 @@ class GridActivity : AppCompatActivity() {
 
     private fun getList():  ArrayList<Any> {
         val list = ArrayList<Any>()
-        repeat(10) {
+        repeat(1000) {
             val k =it + 1
             list.add(GridItemData(k.toString()))
         }

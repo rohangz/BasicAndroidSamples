@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rinfinity.basicandroidsamples.adapter.listeners.ItemTouchHelperListener
 
 abstract class BasicSampleItemViewHolder(
-    protected val root: View,
-    protected val mContext: Context,
+      root: View,
+      mContext: Context,
     protected val mItemTouchHelperListener: ItemTouchHelperListener
-) : RecyclerView.ViewHolder(root) {
+) : BaseViewHolder(root, mContext) {
 
     protected var mGestureDetector: GestureDetector
     protected var mGestureDetectorListener: GestureDetector.OnGestureListener
@@ -62,5 +62,4 @@ abstract class BasicSampleItemViewHolder(
         itemView.setOnTouchListener(mOnTouchListener)
     }
 
-    abstract fun bindData(data: Any, position: Int)
 }
